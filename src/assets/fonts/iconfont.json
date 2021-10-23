@@ -6,6 +6,76 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "451572",
+      "name": "售后",
+      "font_class": "shouhou",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "1036391",
+      "name": "退出",
+      "font_class": "shouye",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "1137824",
+      "name": "账户资料",
+      "font_class": "zhanghuziliao",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "2076282",
+      "name": " 订单",
+      "font_class": "dingdan",
+      "unicode": "e897",
+      "unicode_decimal": 59543
+    },
+    {
+      "icon_id": "2811144",
+      "name": "地址管理",
+      "font_class": "dizhiguanli",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "11372737",
+      "name": "优惠券",
+      "font_class": "youhuiquan",
+      "unicode": "e8c0",
+      "unicode_decimal": 59584
+    },
+    {
+      "icon_id": "17605462",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e814",
+      "unicode_decimal": 59412
+    },
+    {
+      "icon_id": "124495",
+      "name": "警告",
+      "font_class": "jinggao",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "11372757",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e8c3",
+      "unicode_decimal": 59587
+    },
+    {
+      "icon_id": "25091515",
+      "name": "错误",
+      "font_class": "cuowu-copy",
+      "unicode": "e8c4",
+      "unicode_decimal": 59588
+    },
+    {
       "icon_id": "1230",
       "name": "用户",
       "font_class": "yonghu",

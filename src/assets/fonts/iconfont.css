@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2791791 */
-  src: url('iconfont.woff2?t=1631172081715') format('woff2'),
-       url('iconfont.woff?t=1631172081715') format('woff'),
-       url('iconfont.ttf?t=1631172081715') format('truetype');
+  src: url('iconfont.woff2?t=1634975993975') format('woff2'),
+       url('iconfont.woff?t=1634975993975') format('woff'),
+       url('iconfont.ttf?t=1634975993975') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,46 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shouhou:before {
+  content: "\e64c";
+}
+
+.icon-shouye:before {
+  content: "\e606";
+}
+
+.icon-zhanghuziliao:before {
+  content: "\e6a8";
+}
+
+.icon-dingdan:before {
+  content: "\e897";
+}
+
+.icon-dizhiguanli:before {
+  content: "\e63f";
+}
+
+.icon-youhuiquan:before {
+  content: "\e8c0";
+}
+
+.icon-dizhi:before {
+  content: "\e814";
+}
+
+.icon-jinggao:before {
+  content: "\e607";
+}
+
+.icon-chenggong:before {
+  content: "\e8c3";
+}
+
+.icon-cuowu-copy:before {
+  content: "\e8c4";
 }
 
 .icon-yonghu:before {
