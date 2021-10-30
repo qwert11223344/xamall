@@ -2,7 +2,11 @@
 	<div>
 		<w-header />
 		<w-nav />
+
 		<router-view />
+		<el-backtop
+			target=".page-component__scroll .el-scrollbar__wrap"
+		></el-backtop>
 		<w-footer />
 	</div>
 </template>

@@ -2,7 +2,9 @@
 	<div>
 		<w-header />
 		<w-nav />
+
 		<router-view />
+
 		<w-footer />
 	</div>
 </template>

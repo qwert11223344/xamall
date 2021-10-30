@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
 		<el-backtop
-			target="#app"
-			:visibility-height="100"
+			target=".goods-detail"
+			:visibility-height="20"
 			:right="50"
-			:bottom="150"
+			:bottom="200"
 		></el-backtop>
 		<router-view />
 	</div>
