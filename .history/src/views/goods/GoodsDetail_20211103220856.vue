@@ -288,7 +288,8 @@ export default {
 		BuyNum,
 	},
 	created() {
-		window.scrollTo(0, 0);
+		// window.scrollTo(0, 0);
+		console.log(document.documentElement.pageYOffset);
 		this._getDetail();
 	},
 	watch: {

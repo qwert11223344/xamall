@@ -59,10 +59,10 @@
 						<p class="realtime">
 							<span>您的付款时间还有 </span>
 							<span class="red">
-								<countDown
+								<!-- <countDown
 									v-bind:endTime="countTime"
 									endText="已结束"
-								></countDown>
+								></countDown> -->
 							</span>
 							<span>，超时后订单将自动取消。</span>
 						</p>
@@ -73,6 +73,11 @@
 								<h3>订单状态：已支付，商家正在配货中</h3>
 							</li>
 						</ul>
+						<!-- <p class="realtime">
+							<span
+								>请耐心等待，审核结果将发送到您的邮箱，并且您所填写的捐赠数据将显示在捐赠表中。</span
+							>
+						</p> -->
 					</div>
 					<div class="status-now" v-if="orderStatus === 4">
 						<ul>
@@ -129,16 +134,7 @@
 						</div>
 					</div>
 					<!--合计-->
-
 					<div class="order-discount-line">
-						<div class="express" v-if="orderStatus === 2 || orderStatus === 3">
-							<p>
-								<span>物流公司：</span><span>{{ express }}</span>
-							</p>
-							<p>
-								<span>物流单号：</span><span>{{ express_num }}</span>
-							</p>
-						</div>
 						<p class="total">
 							<span>商品总计：</span>
 							<span>¥ {{ totalPrice }}</span>
@@ -190,8 +186,6 @@ export default {
 			orderStatus: 0,
 			orderId: "",
 			userName: "",
-			express_num: "",
-			express: "",
 			tel: "",
 			streetName: "",
 			orderTitle: "",
@@ -206,6 +200,11 @@ export default {
 	},
 	mixins: [messageMixin, goodsDetailMixin],
 	methods: {
+		orderPayment(orderId) {
+			window.open(
+				window.location.origin + "#/order/payment?orderId=" + orderId
+			);
+		},
 		// 获取订单详情
 		_getOrderDetail() {
 			let params = {
@@ -213,8 +212,6 @@ export default {
 			};
 			getOrderDetail(params).then((res) => {
 				let data = res.data.result;
-				this.express_num = data.express_num;
-				this.express = data.express;
 				this.orderList = data.prod_list;
 				this.totalPrice = data.total_price;
 				this.userName = data.address_list[0].nick_name;
@@ -230,7 +227,13 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				// this.closeTime = res.result.closeDate;
+				// this.payTime = res.result.payDate;
+				// if (this.orderStatus === 5) {
+				// 	this.finishTime = res.result.finishDate;
+				// } else {
+				// 	this.countTime = res.result.finishDate;
+				// }
 				this.loading = false;
 			});
 		},
@@ -369,12 +372,8 @@ img {
 		display: inline-block;
 		height: 100%;
 	}
-	.express {
-		display: inline-flex;
-		flex-direction: column;
-	}
 	.first {
-		display: inline-flex;
+		display: flex;
 		justify-content: space-between;
 		flex: 1;
 		.f-bc {

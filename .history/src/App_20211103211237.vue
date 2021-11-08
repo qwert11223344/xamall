@@ -1,11 +1,11 @@
 <template>
 	<div id="app">
-		<!-- <el-backtop
+		<el-backtop
 			target="#app"
 			:visibility-height="100"
 			:right="50"
 			:bottom="150"
-		></el-backtop> -->
+		></el-backtop>
 		<router-view />
 	</div>
 </template>
@@ -20,8 +20,8 @@ export default {
 <style scoped>
 @import url("assets/fonts/iconfont.css");
 @import url("assets/style/index.scss");
-/* #app {
+#app {
 	overflow-y: scroll;
 	height: 100vh;
-} */
+}
 </style>

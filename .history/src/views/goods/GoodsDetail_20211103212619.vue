@@ -112,10 +112,8 @@
 				</div>
 				<div class="cart" v-if="selectProd.state === 0">
 					<span class="offShelf"
-						>该商品已被下架哦~可以看看<router-link to="/goods"
-							><el-button type="text">全部商品</el-button></router-link
-						></span
-					>
+						>该商品已被下架哦~可以看看<router-link to="/goods"></router-link
+					></span>
 				</div>
 			</div>
 			<!--产品信息-->

@@ -91,6 +91,10 @@
 						</p>
 					</div>
 					<div class="gray-sub-title cart-title">
+						<div class="express">
+							<p><span>物流公司</span><span></span></p>
+							<p><span>物流单号</span><span></span></p>
+						</div>
 						<div class="first">
 							<div>
 								<span class="order-id">商品名称</span>
@@ -129,16 +133,7 @@
 						</div>
 					</div>
 					<!--合计-->
-
 					<div class="order-discount-line">
-						<div class="express" v-if="orderStatus === 2 || orderStatus === 3">
-							<p>
-								<span>物流公司：</span><span>{{ express }}</span>
-							</p>
-							<p>
-								<span>物流单号：</span><span>{{ express_num }}</span>
-							</p>
-						</div>
 						<p class="total">
 							<span>商品总计：</span>
 							<span>¥ {{ totalPrice }}</span>
@@ -213,8 +208,6 @@ export default {
 			};
 			getOrderDetail(params).then((res) => {
 				let data = res.data.result;
-				this.express_num = data.express_num;
-				this.express = data.express;
 				this.orderList = data.prod_list;
 				this.totalPrice = data.total_price;
 				this.userName = data.address_list[0].nick_name;
@@ -369,12 +362,8 @@ img {
 		display: inline-block;
 		height: 100%;
 	}
-	.express {
-		display: inline-flex;
-		flex-direction: column;
-	}
 	.first {
-		display: inline-flex;
+		display: flex;
 		justify-content: space-between;
 		flex: 1;
 		.f-bc {

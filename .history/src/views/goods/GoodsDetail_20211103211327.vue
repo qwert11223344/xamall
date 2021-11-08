@@ -110,13 +110,6 @@
 						></w-button>
 					</div>
 				</div>
-				<div class="cart" v-if="selectProd.state === 0">
-					<span class="offShelf"
-						>该商品已被下架哦~可以看看<router-link to="/goods"
-							><el-button type="text">全部商品</el-button></router-link
-						></span
-					>
-				</div>
 			</div>
 			<!--产品信息-->
 		</div>
@@ -288,7 +281,6 @@ export default {
 		BuyNum,
 	},
 	created() {
-		window.scrollTo(0, 0);
 		this._getDetail();
 	},
 	watch: {
@@ -461,11 +453,6 @@ export default {
 			display: flex;
 			background-color: #f9f9f9;
 			padding: 10px 0 0 150px;
-			.offShelf {
-				font-size: 16px;
-				color: #d44d44;
-				margin-left: 70%;
-			}
 			& > span {
 				font-size: 13px;
 				padding: 0 20px 0 0;

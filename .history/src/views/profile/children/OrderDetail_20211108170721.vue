@@ -129,16 +129,15 @@
 						</div>
 					</div>
 					<!--合计-->
-
+					<div class="express" v-if="orderStatus === 2 || orderStatus === 3">
+						<p>
+							<span>物流公司：</span><span>{{ express }}</span>
+						</p>
+						<p>
+							<span>物流单号：</span><span>{{ express_num }}</span>
+						</p>
+					</div>
 					<div class="order-discount-line">
-						<div class="express" v-if="orderStatus === 2 || orderStatus === 3">
-							<p>
-								<span>物流公司：</span><span>{{ express }}</span>
-							</p>
-							<p>
-								<span>物流单号：</span><span>{{ express_num }}</span>
-							</p>
-						</div>
 						<p class="total">
 							<span>商品总计：</span>
 							<span>¥ {{ totalPrice }}</span>

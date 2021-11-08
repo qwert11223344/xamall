@@ -320,7 +320,7 @@ export default {
 }
 .goods-detail {
 	width: 100%;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	.store-content {
 		clear: both;
 		width: 1220px;

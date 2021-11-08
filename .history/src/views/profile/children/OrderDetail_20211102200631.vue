@@ -129,16 +129,7 @@
 						</div>
 					</div>
 					<!--合计-->
-
 					<div class="order-discount-line">
-						<div class="express" v-if="orderStatus === 2 || orderStatus === 3">
-							<p>
-								<span>物流公司：</span><span>{{ express }}</span>
-							</p>
-							<p>
-								<span>物流单号：</span><span>{{ express_num }}</span>
-							</p>
-						</div>
 						<p class="total">
 							<span>商品总计：</span>
 							<span>¥ {{ totalPrice }}</span>
@@ -190,8 +181,6 @@ export default {
 			orderStatus: 0,
 			orderId: "",
 			userName: "",
-			express_num: "",
-			express: "",
 			tel: "",
 			streetName: "",
 			orderTitle: "",
@@ -213,8 +202,6 @@ export default {
 			};
 			getOrderDetail(params).then((res) => {
 				let data = res.data.result;
-				this.express_num = data.express_num;
-				this.express = data.express;
 				this.orderList = data.prod_list;
 				this.totalPrice = data.total_price;
 				this.userName = data.address_list[0].nick_name;
@@ -230,7 +217,14 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				this.countTime = new Date(data.created * 1 + 86400000).toString();
+				// this.closeTime = res.result.closeDate;
+				// this.payTime = res.result.payDate;
+				// if (this.orderStatus === 5) {
+				// 	this.finishTime = res.result.finishDate;
+				// } else {
+				// 	this.countTime = res.result.finishDate;
+				// }
 				this.loading = false;
 			});
 		},
@@ -369,12 +363,8 @@ img {
 		display: inline-block;
 		height: 100%;
 	}
-	.express {
-		display: inline-flex;
-		flex-direction: column;
-	}
 	.first {
-		display: inline-flex;
+		display: flex;
 		justify-content: space-between;
 		flex: 1;
 		.f-bc {
