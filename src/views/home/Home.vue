@@ -8,7 +8,7 @@
 		>
 			<swiper :banner="banner" />
 			<div v-for="(item, i) in homeList" :key="i">
-				<div class="activity-panel" v-if="item.type === 1">
+				<div class="activity-panel" v-if="item.type === 1 && item.state === 1">
 					<ul class="box">
 						<li
 							class="content"
@@ -22,7 +22,10 @@
 					</ul>
 				</div>
 
-				<section class="w mt30 clearfix" v-if="item.type === 2">
+				<section
+					class="w mt30 clearfix"
+					v-if="item.type === 2 && item.state === 1"
+				>
 					<shelf :title="item.name">
 						<template #content>
 							<div class="hot">
@@ -38,7 +41,10 @@
 
 				<section
 					class="w mt30 clearfix"
-					v-if="item.type === 3 || item.type === 4"
+					v-if="
+						(item.type === 3 && item.state === 1) ||
+						(item.type === 4 && item.state === 1)
+					"
 				>
 					<shelf :title="item.name">
 						<template #content>
@@ -46,7 +52,7 @@
 								<div
 									class="imgbanner"
 									v-for="(item, j) in item.panelContents"
-									v-if="item.type === 4"
+									v-if="item.type === 4 && item.state === 1"
 									:key="j"
 									@click="linkTo(item)"
 								>
@@ -57,7 +63,7 @@
 									:item="item"
 									v-for="(item, j) in item.panelContents"
 									:key="j + 'key'"
-									v-if="item.type === 3"
+									v-if="item.type === 3 && item.state === 1"
 								></mall-good>
 							</div>
 						</template>

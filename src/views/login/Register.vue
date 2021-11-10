@@ -1,111 +1,113 @@
 <template>
-	<div class="login v2">
-		<div class="wrapper">
-			<div
-				class="dialog dialog-shadow"
-				style="display: block; margin-top: -362px"
-			>
-				<div class="registered">
-					<h4>注册 小爱商城 账号</h4>
-					<div class="content" style="margin-top: 20px">
-						<ul class="common-form">
-							<el-form
-								:model="ruleForm"
-								status-icon
-								:rules="rules"
-								ref="ruleForm"
-								label-width="100px"
-								class="demo-ruleForm"
-							>
-								<li>
-									<el-form-item label="用户名" prop="userName">
-										<el-input
-											type="text"
-											v-model="ruleForm.userName"
-											autocomplete="off"
-										></el-input>
-									</el-form-item>
-								</li>
-								<li>
-									<el-form-item label="密码" prop="pass">
-										<el-input
-											type="password"
-											v-model="ruleForm.pass"
-											autocomplete="off"
-										></el-input>
-									</el-form-item>
-								</li>
-								<li>
-									<el-form-item label="确认密码" prop="checkPass">
-										<el-input
-											v-model="ruleForm.checkPass"
-											type="password"
-										></el-input>
-									</el-form-item>
-								</li>
-								<li>
-									<el-form-item label="手机号" prop="phone">
-										<el-input type="text" v-model="ruleForm.phone"></el-input>
-									</el-form-item>
-								</li>
-							</el-form>
-
-							<li></li>
-							<li>
-								<el-checkbox class="agree" v-model="check.agreement">
-									我已阅读并同意遵守
-									<a
-										@click="
-											open(
-												'法律声明',
-												'此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题'
-											)
-										"
-										>法律声明</a
-									>
-									和
-									<a
-										@click="
-											open(
-												'隐私条款',
-												'本网站将不会严格遵守有关法律法规和本隐私政策所载明的内容收集、使用您的信息'
-											)
-										"
-										>隐私条款</a
-									>
-								</el-checkbox>
-							</li>
-						</ul>
-
-						<div class="btn">
-							<el-button
-								type="primary"
-								:disabled="!isdisabled"
-								@click="_register"
-								:loading="loading"
-								style="width: 250px; height: 30px"
-							>
-								注册</el-button
-							>
-						</div>
-						<div class="border" style="margin-bottom: 10px"></div>
-						<ul class="common-form pr">
-							<!-- <li class="pa" style="left: 0;top: 0;margin: 0;color: #d44d44">{{registered.errMsg}}</li> -->
-							<li
-								style="
-									text-align: center;
-									line-height: 48px;
-									margin-bottom: 0;
-									font-size: 12px;
-									color: #999;
-								"
-							>
-								<span>如果您已拥有 小爱 账号，则可在此</span>
-								<a href="javascript:;" style="margin: 0 5px" @click="toLogin"
-									>登陆</a
+	<div id="register">
+		<div class="login v2">
+			<div class="wrapper">
+				<div
+					class="dialog dialog-shadow"
+					style="display: block; margin-top: -362px"
+				>
+					<div class="registered">
+						<h4>注册 小爱商城 账号</h4>
+						<div class="content" style="margin-top: 20px">
+							<ul class="common-form">
+								<el-form
+									:model="ruleForm"
+									status-icon
+									:rules="rules"
+									ref="ruleForm"
+									label-width="100px"
+									class="demo-ruleForm"
 								>
-							</li>
-						</ul>
+									<li>
+										<el-form-item label="用户名" prop="userName">
+											<el-input
+												type="text"
+												v-model="ruleForm.userName"
+												autocomplete="off"
+											></el-input>
+										</el-form-item>
+									</li>
+									<li>
+										<el-form-item label="密码" prop="pass">
+											<el-input
+												type="password"
+												v-model="ruleForm.pass"
+												autocomplete="off"
+											></el-input>
+										</el-form-item>
+									</li>
+									<li>
+										<el-form-item label="确认密码" prop="checkPass">
+											<el-input
+												v-model="ruleForm.checkPass"
+												type="password"
+											></el-input>
+										</el-form-item>
+									</li>
+									<li>
+										<el-form-item label="手机号" prop="phone">
+											<el-input type="text" v-model="ruleForm.phone"></el-input>
+										</el-form-item>
+									</li>
+								</el-form>
+
+								<li></li>
+								<li>
+									<el-checkbox class="agree" v-model="check.agreement">
+										我已阅读并同意遵守
+										<a
+											@click="
+												open(
+													'法律声明',
+													'此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题'
+												)
+											"
+											>法律声明</a
+										>
+										和
+										<a
+											@click="
+												open(
+													'隐私条款',
+													'本网站将不会严格遵守有关法律法规和本隐私政策所载明的内容收集、使用您的信息'
+												)
+											"
+											>隐私条款</a
+										>
+									</el-checkbox>
+								</li>
+							</ul>
+
+							<div class="btn">
+								<el-button
+									type="primary"
+									:disabled="!isdisabled"
+									@click="_register"
+									:loading="loading"
+									style="width: 250px; height: 30px"
+								>
+									注册</el-button
+								>
+							</div>
+							<div class="border" style="margin-bottom: 10px"></div>
+							<ul class="common-form pr">
+								<!-- <li class="pa" style="left: 0;top: 0;margin: 0;color: #d44d44">{{registered.errMsg}}</li> -->
+								<li
+									style="
+										text-align: center;
+										line-height: 48px;
+										margin-bottom: 0;
+										font-size: 12px;
+										color: #999;
+									"
+								>
+									<span>如果您已拥有 小爱 账号，则可在此</span>
+									<a href="javascript:;" style="margin: 0 5px" @click="toLogin"
+										>登陆</a
+									>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -253,10 +255,14 @@ export default {
 * {
 	box-sizing: content-box;
 }
-
+.el-input /deep/ .el-input__inner {
+	background-color: rgba(255, 255, 255, 0.247);
+	border: none;
+}
 .login {
 	overflow-x: hidden;
 	overflow-y: hidden;
+
 	.input {
 		height: 50px;
 		display: flex;
@@ -272,10 +278,11 @@ export default {
 		}
 	}
 	.wrapper {
-		background: url(/static/images/bg_9b9dcb65ff.png) repeat;
 		background-size: 100px;
 		min-height: 800px;
 		min-width: 630px;
+		background: url("~assets/img/background.gif");
+		background-size: cover;
 	}
 }
 
@@ -287,13 +294,13 @@ export default {
 	left: 50%;
 	margin-left: -225px;
 	position: absolute;
+	backdrop-filter: blur(20px);
 	.title {
 		background: linear-gradient(#fff, #f5f5f5);
 		height: auto;
 		overflow: visible;
 		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 		position: relative;
-		background-image: url(/static/images/smartisan_4ada7fecea.png);
 		background-size: 140px;
 		background-position: top center;
 		background-repeat: no-repeat;
@@ -305,6 +312,7 @@ export default {
 			padding: 0;
 			text-align: center;
 			color: #666;
+
 			border-bottom: 1px solid #dcdcdc;
 			-webkit-box-shadow: none;
 			-moz-box-shadow: none;
@@ -357,7 +365,6 @@ export default {
 @media screen and (min-width: 737px),
 	screen and (-webkit-max-device-pixel-ratio: 1.9) and (max-width: 736px) and (min-device-width: 737px) {
 	.wrapper {
-		background: url(/static/images/con-bg_04f25dbf8e.jpg) repeat-x;
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -365,7 +372,6 @@ export default {
 		right: 0;
 	}
 	.dialog {
-		background: url(/static/images/dialog-gray-bg.png) #fff bottom repeat-x;
 		border-radius: 12px;
 		display: none;
 		margin: -163px 0 0 -218px;
@@ -373,6 +379,8 @@ export default {
 		position: fixed;
 		left: 50%;
 		top: 50%;
+		color: #fff;
+		background: rgba($color: #f3f3f3, $alpha: 0.3);
 	}
 	.dialog .title h4 {
 		border-bottom: #d1d1d1 solid 1px;
@@ -388,7 +396,7 @@ export default {
 		position: absolute;
 		top: 0px;
 		left: 2px;
-		color: #999;
+		color: #333;
 	}
 	.register {
 		padding: 1px 10px 0;
@@ -401,10 +409,9 @@ export default {
 	.other {
 		margin: 20px 5px 0 0;
 		width: auto;
-		color: #bbb;
+
 		font-size: 12px;
 		cursor: default;
-		color: #999;
 	}
 	.footer {
 		display: flex;
@@ -412,7 +419,7 @@ export default {
 	}
 	.agree {
 		margin-bottom: 30px;
-		color: #999;
+		color: #fff;
 	}
 }
 
@@ -429,6 +436,7 @@ export default {
 		font-size: 20px;
 		height: 60px;
 		line-height: 60px;
+		backdrop-filter: blur(20px);
 	}
 }
 
