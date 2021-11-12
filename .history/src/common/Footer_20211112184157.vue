@@ -37,7 +37,7 @@
         <ul class="c0">
           <h3 class="c1">友情链接</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="">宇cccc</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">koa</a></li>
             <li class="c2"><a class="c3" target="_blank" href="http://www.smartisan.com">Smartisan</a></li>
             <li class="c2"><a class="c3" target="_blank" href="https://cn.vuejs.org/">Vue</a></li>
           </ul>
@@ -46,7 +46,7 @@
           <h3 class="c1">关注我吧</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2206808590&site=qq&menu=yes">腾讯 QQ</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://weibo.com/2255094222/profile">新浪微博</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://weibo.com/5994739382/profile">新浪微博</a></li>
             <li class="c2"><a class="c3" target="_blank" href="mailto:2206808590@qq.com">官方邮箱</a></li>
           </ul>
         </ul>
@@ -86,8 +86,7 @@ export default {
 		open1() {
 			this.$notify.info({
 				title: "法律声明",
-				message:
-					"此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题",
+				message: "此仅为个人练习模仿项目，仅供学习参考，承担不起任何法律问题",
 			});
 		},
 		open2() {
@@ -107,13 +106,13 @@ export default {
 		open4() {
 			this.$notify.info({
 				title: "支付方式",
-				message: "支持支付宝、微信等方式捐赠",
+				message: "支持支付宝、微信等方式",
 			});
 		},
 		open5() {
 			this.$notify({
 				title: "送货政策",
-				message: "本网站所有商品购买后不会发货，将用作捐赠",
+				message: "本网站所有商品购买后不会发货",
 				type: "warning",
 			});
 		},
@@ -192,8 +191,6 @@ footer {
 
 .time {
 	margin-top: 5px;
-	right: -4px;
-	position: relative;
 	clear: both;
 	width: 241px;
 	font-size: 12px;

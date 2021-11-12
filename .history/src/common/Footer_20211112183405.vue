@@ -14,16 +14,31 @@
           <h3 class="c1">服务支持</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="">官方开源</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall">项目前端</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall-admin">项目后端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目前端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目后端</a></li>
           </ul>
         </ul>
-   
+        <ul class="c0">
+          <h3 class="c1">自助服务</h3>
+          <ul>
+            <li class="c2"><a class="c3" target="_blank" href="">个人博客</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">个人简介</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">个人视频</a></li>
+          </ul>
+        </ul>
+        <ul class="c0">
+          <h3 class="c1">其他项目</h3>
+          <ul>
+            <li class="c2"><a class="c3" target="_blank" href="">XPay支付系统</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">数据共享</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">待开发...</a></li>
+          </ul>
+        </ul>
         <ul class="c0">
           <h3 class="c1">友情链接</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="https://koajs.com/">koa</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://www.smartisan.com">Smartisan</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">宇cccc</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://www.smartisan.com">Smartisan</a></li>
             <li class="c2"><a class="c3" target="_blank" href="https://cn.vuejs.org/">Vue</a></li>
           </ul>
         </ul>
@@ -31,7 +46,7 @@
           <h3 class="c1">关注我吧</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2206808590&site=qq&menu=yes">腾讯 QQ</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://weibo.com/5994739382/profile">新浪微博</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://weibo.com/2255094222/profile">新浪微博</a></li>
             <li class="c2"><a class="c3" target="_blank" href="mailto:2206808590@qq.com">官方邮箱</a></li>
           </ul>
         </ul>
@@ -71,7 +86,8 @@ export default {
 		open1() {
 			this.$notify.info({
 				title: "法律声明",
-				message: "此仅为个人练习模仿项目，仅供学习参考，承担不起任何法律问题",
+				message:
+					"此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题",
 			});
 		},
 		open2() {
@@ -84,20 +100,20 @@ export default {
 		open3() {
 			this.$notify({
 				title: "离线帮助",
-				message: "你自己是最棒的",
+				message: "没人会帮助你，请自己靠自己",
 				type: "warning",
 			});
 		},
 		open4() {
 			this.$notify.info({
 				title: "支付方式",
-				message: "支持支付宝、微信等方式",
+				message: "支持支付宝、微信等方式捐赠",
 			});
 		},
 		open5() {
 			this.$notify({
 				title: "送货政策",
-				message: "本网站所有商品购买后不会发货",
+				message: "本网站所有商品购买后不会发货，将用作捐赠",
 				type: "warning",
 			});
 		},
@@ -176,6 +192,8 @@ footer {
 
 .time {
 	margin-top: 5px;
+	right: 0px;
+	position: relative;
 	clear: both;
 	width: 241px;
 	font-size: 12px;

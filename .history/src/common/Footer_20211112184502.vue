@@ -14,8 +14,8 @@
           <h3 class="c1">服务支持</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="">官方开源</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall">项目前端</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall-admin">项目后端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目前端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目后端</a></li>
           </ul>
         </ul>
    
@@ -84,7 +84,7 @@ export default {
 		open3() {
 			this.$notify({
 				title: "离线帮助",
-				message: "你自己是最棒的",
+				message: "没人会帮助你，请自己靠自己",
 				type: "warning",
 			});
 		},

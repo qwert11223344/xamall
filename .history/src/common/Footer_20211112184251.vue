@@ -14,16 +14,31 @@
           <h3 class="c1">服务支持</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="">官方开源</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall">项目前端</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/qwert11223344/xamall-admin">项目后端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目前端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">项目后端</a></li>
           </ul>
         </ul>
-   
+        <ul class="c0">
+          <h3 class="c1">自助服务</h3>
+          <ul>
+            <li class="c2"><a class="c3" target="_blank" href="">个人博客</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">个人简介</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">个人视频</a></li>
+          </ul>
+        </ul>
+        <ul class="c0">
+          <h3 class="c1">其他项目</h3>
+          <ul>
+            <li class="c2"><a class="c3" target="_blank" href="">XPay支付系统</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">数据共享</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="">待开发...</a></li>
+          </ul>
+        </ul>
         <ul class="c0">
           <h3 class="c1">友情链接</h3>
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="https://koajs.com/">koa</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://www.smartisan.com">Smartisan</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://www.smartisan.com">Smartisan</a></li>
             <li class="c2"><a class="c3" target="_blank" href="https://cn.vuejs.org/">Vue</a></li>
           </ul>
         </ul>
@@ -84,7 +99,7 @@ export default {
 		open3() {
 			this.$notify({
 				title: "离线帮助",
-				message: "你自己是最棒的",
+				message: "没人会帮助你，请自己靠自己",
 				type: "warning",
 			});
 		},

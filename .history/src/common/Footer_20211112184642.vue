@@ -84,7 +84,7 @@ export default {
 		open3() {
 			this.$notify({
 				title: "离线帮助",
-				message: "你自己是最棒的",
+				message: "没人会帮助你，请自己靠自己",
 				type: "warning",
 			});
 		},

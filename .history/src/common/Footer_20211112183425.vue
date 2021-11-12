@@ -134,8 +134,6 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	position: relative;
-	bottom: 0;
 }
 
 .container {
@@ -194,7 +192,6 @@ footer {
 
 .time {
 	margin-top: 5px;
-	right: -4px;
 	position: relative;
 	clear: both;
 	width: 241px;
