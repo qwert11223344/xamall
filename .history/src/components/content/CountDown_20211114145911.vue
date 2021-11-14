@@ -28,6 +28,7 @@ export default {
 	},
 	methods: {
 		countdowm(timestamp) {
+			console.log(this);
 			let self = this;
 			let timer = setInterval(function () {
 				let nowTime = new Date();
@@ -54,7 +55,7 @@ export default {
 				} else {
 					clearInterval(timer);
 					self.content = self.endText;
-					self.$emit("countDownEnd");
+					self.$emit("countDown");
 				}
 			}, 1000);
 		},

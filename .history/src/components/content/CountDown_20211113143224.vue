@@ -54,7 +54,7 @@ export default {
 				} else {
 					clearInterval(timer);
 					self.content = self.endText;
-					self.$emit("countDownEnd");
+					this.$emit("countDown");
 				}
 			}, 1000);
 		},

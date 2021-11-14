@@ -46,25 +46,15 @@
 									round
 									>现在付款</el-button
 								>
-								<el-popconfirm
-									confirm-button-text="好的"
-									cancel-button-text="不用了"
-									icon="el-icon-info"
-									icon-color="red"
-									title="确定要取消订单么？"
-									@confirm="_cancelOrder"
-									@cancel="_getOrderDetail"
-									style="margin-left: 10px"
+
+								<el-button
+									@click="_cancelOrder()"
+									size="mini"
+									plain
+									round
+									type="danger"
+									>取消订单</el-button
 								>
-									<el-button
-										slot="reference"
-										size="mini"
-										plain
-										round
-										type="danger"
-										>取消订单</el-button
-									>
-								</el-popconfirm>
 							</li>
 						</ul>
 						<p class="realtime">
@@ -73,7 +63,6 @@
 								<countDown
 									v-bind:endTime="countTime"
 									endText="已结束"
-									@countDownEnd="countDownEnd"
 								></countDown>
 							</span>
 							<span>，超时后订单将自动取消。</span>
@@ -240,7 +229,7 @@ export default {
 					new Date(data.created * 1),
 					"yyyy-MM-dd hh:mm:ss"
 				);
-				this.closeTime = formatDate(
+				this.createTime = formatDate(
 					new Date(data.updated * 1),
 					"yyyy-MM-dd hh:mm:ss"
 				);
@@ -251,18 +240,15 @@ export default {
 				this.loading = false;
 			});
 		},
-		countDownEnd() {
-			this._cancelOrder();
-		},
 		async _cancelOrder() {
-			// const confirmResult = await this.$confirm("是否取消该订单", "提示", {
-			// 	confirmButtonText: "确定",
-			// 	cancelButtonText: "取消",
-			// 	type: "warning",
-			// }).catch((err) => err);
-			// if (confirmResult != "confirm") {
-			// 	return this.$message.info("已取消");
-			// }
+			const confirmResult = await this.$confirm("是否取消该订单", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			}).catch((err) => err);
+			if (confirmResult != "confirm") {
+				return this.$message.info("已取消");
+			}
 			cancelOrder({ _id: this.orderId }).then((res) => {
 				if (res.success === true) {
 					this.message(res.message, "success");

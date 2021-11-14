@@ -65,10 +65,10 @@
 												><el-tag type="warning">未发货</el-tag></span
 											>
 											<span v-else-if="item.state === 2"
-												><el-tag type="success">已发货</el-tag></span
+												><el-tag>已发货</el-tag></span
 											>
 											<span v-else-if="item.state === 3"
-												><el-tag>已完成</el-tag></span
+												><el-tag type="success">已完成</el-tag></span
 											>
 											<span v-else-if="item.state === 4"
 												><el-tag type="info">订单关闭</el-tag></span

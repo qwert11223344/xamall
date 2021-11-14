@@ -138,15 +138,14 @@ export function getOrderDetail(params) {
   })
 }
 
-//订单关闭,取消订单
-export function cancelOrder(params) {
+//订单关闭
+export function orderClosed(params) {
   return network({
-    url: 'user/cancelOrder',
+    url: 'user/orderClosed',
     method: 'post',
     data: params
   })
 }
-
 
 //修改购物车的数量
 export function updateProdNum(params) {

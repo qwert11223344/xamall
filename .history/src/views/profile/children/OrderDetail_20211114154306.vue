@@ -246,7 +246,7 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				this.countTime = (data.created * 1 + 50000).toString();
 
 				this.loading = false;
 			});

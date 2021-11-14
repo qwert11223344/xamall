@@ -54,7 +54,6 @@
 									title="确定要取消订单么？"
 									@confirm="_cancelOrder"
 									@cancel="_getOrderDetail"
-									style="margin-left: 10px"
 								>
 									<el-button
 										slot="reference"
@@ -246,7 +245,7 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				this.countTime = (data.created * 1 + 50000).toString();
 
 				this.loading = false;
 			});

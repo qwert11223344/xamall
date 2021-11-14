@@ -58,21 +58,11 @@
 										<div class="num">x{{ good.prod_count }}</div>
 
 										<div class="type">
-											<span v-if="item.state === 0"
-												><el-tag type="danger">未付款</el-tag></span
-											>
-											<span v-else-if="item.state === 1"
-												><el-tag type="warning">未发货</el-tag></span
-											>
-											<span v-else-if="item.state === 2"
-												><el-tag type="success">已发货</el-tag></span
-											>
-											<span v-else-if="item.state === 3"
-												><el-tag>已完成</el-tag></span
-											>
-											<span v-else-if="item.state === 4"
-												><el-tag type="info">订单关闭</el-tag></span
-											>
+											<span v-if="item.state === 0">未付款</span>
+											<span v-else-if="item.state === 1">未发货</span>
+											<span v-else-if="item.state === 2">已发货</span>
+											<span v-else-if="item.state === 3">已完成</span>
+											<span v-else-if="item.state === 4">订单关闭</span>
 											<el-button
 												@click="_delOrder(item.orderId, i)"
 												type="danger"
@@ -320,6 +310,7 @@ export default {
 			}
 			.type {
 				span {
+					color: #111;
 					font-size: 12px;
 				}
 			}

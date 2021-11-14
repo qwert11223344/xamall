@@ -51,13 +51,11 @@
 									cancel-button-text="不用了"
 									icon="el-icon-info"
 									icon-color="red"
-									title="确定要取消订单么？"
-									@confirm="_cancelOrder"
-									@cancel="_getOrderDetail"
-									style="margin-left: 10px"
+									title="这是一段内容确定删除吗？"
 								>
 									<el-button
 										slot="reference"
+										@click="_cancelOrder()"
 										size="mini"
 										plain
 										round
@@ -246,7 +244,7 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				this.countTime = (data.created * 1 + 5000).toString();
 
 				this.loading = false;
 			});

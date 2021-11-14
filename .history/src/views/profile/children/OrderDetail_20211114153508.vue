@@ -51,20 +51,18 @@
 									cancel-button-text="不用了"
 									icon="el-icon-info"
 									icon-color="red"
-									title="确定要取消订单么？"
-									@confirm="_cancelOrder"
-									@cancel="_getOrderDetail"
-									style="margin-left: 10px"
+									title="这是一段内容确定删除吗？"
 								>
-									<el-button
-										slot="reference"
-										size="mini"
-										plain
-										round
-										type="danger"
-										>取消订单</el-button
-									>
+									<el-button slot="reference">删除</el-button>
 								</el-popconfirm>
+								<el-button
+									@click="_cancelOrder()"
+									size="mini"
+									plain
+									round
+									type="danger"
+									>取消订单</el-button
+								>
 							</li>
 						</ul>
 						<p class="realtime">
@@ -246,7 +244,7 @@ export default {
 				);
 				this.orderStatus = data.state;
 				this.orderTitle = "订单号：" + data.order_num;
-				this.countTime = (data.created * 1 + 86400000).toString();
+				this.countTime = (data.created * 1 + 5000).toString();
 
 				this.loading = false;
 			});
@@ -255,14 +253,14 @@ export default {
 			this._cancelOrder();
 		},
 		async _cancelOrder() {
-			// const confirmResult = await this.$confirm("是否取消该订单", "提示", {
-			// 	confirmButtonText: "确定",
-			// 	cancelButtonText: "取消",
-			// 	type: "warning",
-			// }).catch((err) => err);
-			// if (confirmResult != "confirm") {
-			// 	return this.$message.info("已取消");
-			// }
+			const confirmResult = await this.$confirm("是否取消该订单", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			}).catch((err) => err);
+			if (confirmResult != "confirm") {
+				return this.$message.info("已取消");
+			}
 			cancelOrder({ _id: this.orderId }).then((res) => {
 				if (res.success === true) {
 					this.message(res.message, "success");
