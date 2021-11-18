@@ -190,11 +190,11 @@ export default {
 				this.message("账号或者密码不能为空!", "error");
 				return false;
 			}
-			if (!this.serverToken) {
-				this.message("请完成验证", "info");
-				this.logintxt = "登录";
-				return false;
-			}
+			// if (!this.serverToken) {
+			// 	this.message("请完成验证");
+			// 	this.logintxt = "登录";
+			// 	return false;
+			// }
 
 			let params = {
 				userName: this.ruleForm.userName,

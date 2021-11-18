@@ -191,7 +191,7 @@ export default {
 				return false;
 			}
 			if (!this.serverToken) {
-				this.message("请完成验证", "info");
+				this.message("请完成验证");
 				this.logintxt = "登录";
 				return false;
 			}
