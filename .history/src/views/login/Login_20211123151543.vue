@@ -330,6 +330,8 @@ export default {
 			};
 			let res = await checkVerCode(params);
 			if (res.success === true) {
+				console.log(this.findForm);
+				console.log(this.updateForm);
 				this.updateForm.user_name = this.findForm.uname;
 				this.message(res.message, "success");
 				this.closeFindPass();

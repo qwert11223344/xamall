@@ -319,8 +319,8 @@ export default {
 		closeFindPass() {
 			this.showFindPass = false;
 			this.$refs.findForm.resetFields();
-			this.verCode = "";
-			Object.keys(this.findForm).forEach((v) => (this.findForm[v] = ""));
+			(this.verCode = ""),
+				Object.keys(this.findForm).forEach((v) => (this.findForm[v] = ""));
 		},
 		// 验证验证码
 		async _checkVerCode() {
@@ -330,7 +330,6 @@ export default {
 			};
 			let res = await checkVerCode(params);
 			if (res.success === true) {
-				this.updateForm.user_name = this.findForm.uname;
 				this.message(res.message, "success");
 				this.closeFindPass();
 				this.showUpdatePass = true;

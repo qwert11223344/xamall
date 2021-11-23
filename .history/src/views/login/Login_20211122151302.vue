@@ -95,15 +95,13 @@
 				</div>
 			</div>
 		</div>
-		<el-dialog title="忘记密码" :visible.sync="showFindPass" width="20%">
-			<el-form :model="findForm" status-icon :rules="rules" ref="findForm">
-				<el-form-item prop="uname">
-					<el-input
-						type="text"
-						v-model="findForm.uname"
-						placeholder="请输入用户名"
-					></el-input>
-				</el-form-item>
+		<el-dialog
+			title="忘记密码"
+			:visible.sync="showFindPass"
+			width="20%"
+			:before-close="handleClose"
+		>
+			<el-form :model="findForm" status-icon :rules="rules">
 				<el-form-item prop="findemail">
 					<el-input
 						type="text"
@@ -124,50 +122,15 @@
 				</li>
 			</el-form>
 			<span slot="footer" class="dialog-footer">
-				<el-button @click="closeFindPass">取 消</el-button>
-				<el-button type="primary" @click="_checkVerCode">确 定</el-button>
-			</span>
-		</el-dialog>
-
-		<el-dialog
-			title="修改密码"
-			:visible.sync="showUpdatePass"
-			width="20%"
-			:before-close="handleClose"
-		>
-			<el-form
-				:model="updateForm"
-				status-icon
-				:rules="updateRules"
-				ref="updateForm"
-			>
-				<el-form-item prop="pass">
-					<el-input
-						type="password"
-						v-model="updateForm.pass"
-						placeholder="请输入密码"
-						:show-password="true"
-					></el-input>
-				</el-form-item>
-				<el-form-item prop="checkPass">
-					<el-input
-						type="password"
-						v-model="updateForm.checkPass"
-						placeholder="请确认密码"
-						:show-password="true"
-					></el-input>
-				</el-form-item>
-			</el-form>
-			<span slot="footer" class="dialog-footer">
-				<el-button @click="showUpdatePass = false">取 消</el-button>
-				<el-button type="primary" @click="_updatePass">确 定</el-button>
+				<el-button @click="showFindPass = false">取 消</el-button>
+				<el-button type="primary" @click="_findPass">确 定</el-button>
 			</span>
 		</el-dialog>
 	</div>
 </template>
 
 <script>
-import { userLogin, findPass, checkVerCode, editPass } from "api/user.js";
+import { userLogin, findPass, checkVerCode } from "api/user.js";
 
 import WButton from "components/content/WButton.vue";
 import VaptCha from "components/common/vaptcha/VaptCha.vue";
@@ -190,27 +153,6 @@ export default {
 				callback();
 			}
 		};
-		let validatePass = (rule, value, callback) => {
-			if (value === "") {
-				callback(new Error("请输入密码"));
-			} else if (!/^[a-zA-Z]\w{5,9}$/.test(value)) {
-				callback(new Error("字母开头,6~10位,含字母数字或下划线"));
-			} else {
-				if (this.updateForm.checkPass !== "") {
-					this.$refs.updateForm.validateField("checkPass");
-				}
-				callback();
-			}
-		};
-		let validatePass2 = (rule, value, callback) => {
-			if (value === "") {
-				callback(new Error("请再次输入密码"));
-			} else if (value !== this.updateForm.pass) {
-				callback(new Error("两次输入密码不一致!"));
-			} else {
-				callback();
-			}
-		};
 		return {
 			cart: [],
 			loginPage: true,
@@ -227,7 +169,6 @@ export default {
 			},
 			verCode: "",
 			findForm: {
-				uname: "",
 				findemail: "",
 			},
 			rules: {
@@ -239,16 +180,6 @@ export default {
 			findPassText: "获取验证码",
 			serverToken: null,
 			showFindPass: false,
-			showUpdatePass: false,
-			updateForm: {
-				user_name: "",
-				pass: "",
-				checkPass: "",
-			},
-			updateRules: {
-				pass: [{ validator: validatePass, trigger: "blur" }],
-				checkPass: [{ validator: validatePass2, trigger: "change" }],
-			},
 		};
 	},
 	mixins: [messageMixin, setPublicKeyMixin],
@@ -298,9 +229,9 @@ export default {
 		async _findPass() {
 			// this.showFindPass = false;
 			this.checkForm = false;
-			let num = 60;
+			let num = 5;
 			let timer = setInterval(() => {
-				this.findPassText = `${num}秒后重试`;
+				this.findPassText = `${num}秒`;
 				num--;
 				if (num === 0) {
 					clearInterval(timer);
@@ -308,45 +239,8 @@ export default {
 					this.findPassText = "获取验证码";
 				}
 			}, 1000);
-			let res = await findPass(this.findForm);
-			if (res.success === true) {
-				this.message(res.message, "success");
-			} else {
-				this.message(res.message, "error");
-			}
-		},
-		// 关闭忘记密码框
-		closeFindPass() {
-			this.showFindPass = false;
-			this.$refs.findForm.resetFields();
-			this.verCode = "";
-			Object.keys(this.findForm).forEach((v) => (this.findForm[v] = ""));
-		},
-		// 验证验证码
-		async _checkVerCode() {
-			let params = {
-				verificationCode: this.verCode,
-				user_name: this.findForm.uname,
-			};
-			let res = await checkVerCode(params);
-			if (res.success === true) {
-				this.updateForm.user_name = this.findForm.uname;
-				this.message(res.message, "success");
-				this.closeFindPass();
-				this.showUpdatePass = true;
-			} else {
-				this.message(res.message, "error");
-			}
-		},
-		//修改密码
-		async _updatePass() {
-			let res = await editPass(this.updateForm);
-			if (res.success === true) {
-				this.message(res.message, "success");
-			} else {
-				this.message(res.message, "error");
-			}
-			this.showUpdatePass = false;
+			// let res = await findPass(this.findForm);
+			// console.log(res);
 		},
 		toRegister() {
 			this.$router.push({

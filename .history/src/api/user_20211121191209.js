@@ -66,22 +66,6 @@ export function findPass(params) {
   })
 }
 
-//验证验证码
-export function checkVerCode(params) {
-  return network({
-    url: '/user/checkVerCode',
-    method: 'post',
-    data: params
-  })
-}
-
-export function editPass(params) {
-  return network({
-    url: '/user/editpass',
-    method: 'post',
-    data: params
-  })
-}
 // 上传头像
 // export function uploadAvatar(params) {
 //   return network({

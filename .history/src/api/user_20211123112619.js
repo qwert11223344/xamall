@@ -75,13 +75,6 @@ export function checkVerCode(params) {
   })
 }
 
-export function editPass(params) {
-  return network({
-    url: '/user/editpass',
-    method: 'post',
-    data: params
-  })
-}
 // 上传头像
 // export function uploadAvatar(params) {
 //   return network({

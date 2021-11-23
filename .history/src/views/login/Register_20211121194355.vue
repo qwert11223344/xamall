@@ -190,9 +190,9 @@ export default {
 				agreement: false,
 			},
 			rules: {
-				userName: [{ validator: checkUserName, trigger: "change" }],
+				userName: [{ validator: checkUserName, trigger: "blur" }],
 				pass: [{ validator: validatePass, trigger: "blur" }],
-				checkPass: [{ validator: validatePass2, trigger: "change" }],
+				checkPass: [{ validator: validatePass2, trigger: "blur" }],
 				phone: [{ validator: validateTel, trigger: "change" }],
 			},
 			loading: false,

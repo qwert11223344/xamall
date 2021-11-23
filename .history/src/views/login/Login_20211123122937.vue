@@ -129,12 +129,7 @@
 			</span>
 		</el-dialog>
 
-		<el-dialog
-			title="修改密码"
-			:visible.sync="showUpdatePass"
-			width="20%"
-			:before-close="handleClose"
-		>
+		<el-dialog title="修改密码" :visible.sync="showUpdatePass" width="20%">
 			<el-form
 				:model="updateForm"
 				status-icon
@@ -146,7 +141,6 @@
 						type="password"
 						v-model="updateForm.pass"
 						placeholder="请输入密码"
-						:show-password="true"
 					></el-input>
 				</el-form-item>
 				<el-form-item prop="checkPass">
@@ -154,20 +148,19 @@
 						type="password"
 						v-model="updateForm.checkPass"
 						placeholder="请确认密码"
-						:show-password="true"
 					></el-input>
 				</el-form-item>
 			</el-form>
 			<span slot="footer" class="dialog-footer">
-				<el-button @click="showUpdatePass = false">取 消</el-button>
-				<el-button type="primary" @click="_updatePass">确 定</el-button>
+				<el-button @click="">取 消</el-button>
+				<el-button type="primary" @click="">确 定</el-button>
 			</span>
 		</el-dialog>
 	</div>
 </template>
 
 <script>
-import { userLogin, findPass, checkVerCode, editPass } from "api/user.js";
+import { userLogin, findPass, checkVerCode } from "api/user.js";
 
 import WButton from "components/content/WButton.vue";
 import VaptCha from "components/common/vaptcha/VaptCha.vue";
@@ -187,27 +180,6 @@ export default {
 				callback(new Error("请输入正确的邮箱格式"));
 			} else {
 				this.checkForm = true;
-				callback();
-			}
-		};
-		let validatePass = (rule, value, callback) => {
-			if (value === "") {
-				callback(new Error("请输入密码"));
-			} else if (!/^[a-zA-Z]\w{5,9}$/.test(value)) {
-				callback(new Error("字母开头,6~10位,含字母数字或下划线"));
-			} else {
-				if (this.updateForm.checkPass !== "") {
-					this.$refs.updateForm.validateField("checkPass");
-				}
-				callback();
-			}
-		};
-		let validatePass2 = (rule, value, callback) => {
-			if (value === "") {
-				callback(new Error("请再次输入密码"));
-			} else if (value !== this.updateForm.pass) {
-				callback(new Error("两次输入密码不一致!"));
-			} else {
 				callback();
 			}
 		};
@@ -240,15 +212,6 @@ export default {
 			serverToken: null,
 			showFindPass: false,
 			showUpdatePass: false,
-			updateForm: {
-				user_name: "",
-				pass: "",
-				checkPass: "",
-			},
-			updateRules: {
-				pass: [{ validator: validatePass, trigger: "blur" }],
-				checkPass: [{ validator: validatePass2, trigger: "change" }],
-			},
 		};
 	},
 	mixins: [messageMixin, setPublicKeyMixin],
@@ -267,13 +230,6 @@ export default {
 				title: t,
 				message: m,
 			});
-		},
-		handleClose(done) {
-			this.$confirm("确认关闭？")
-				.then((_) => {
-					done();
-				})
-				.catch((_) => {});
 		},
 		getRemembered() {
 			var judge = window.localStorage.getItem("remember");
@@ -319,8 +275,8 @@ export default {
 		closeFindPass() {
 			this.showFindPass = false;
 			this.$refs.findForm.resetFields();
-			this.verCode = "";
-			Object.keys(this.findForm).forEach((v) => (this.findForm[v] = ""));
+			(this.verCode = ""),
+				Object.keys(this.findForm).forEach((v) => (this.findForm[v] = ""));
 		},
 		// 验证验证码
 		async _checkVerCode() {
@@ -330,23 +286,11 @@ export default {
 			};
 			let res = await checkVerCode(params);
 			if (res.success === true) {
-				this.updateForm.user_name = this.findForm.uname;
 				this.message(res.message, "success");
 				this.closeFindPass();
-				this.showUpdatePass = true;
 			} else {
 				this.message(res.message, "error");
 			}
-		},
-		//修改密码
-		async _updatePass() {
-			let res = await editPass(this.updateForm);
-			if (res.success === true) {
-				this.message(res.message, "success");
-			} else {
-				this.message(res.message, "error");
-			}
-			this.showUpdatePass = false;
 		},
 		toRegister() {
 			this.$router.push({
